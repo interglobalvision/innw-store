@@ -1,0 +1,6 @@
+development:
+  password: 000000000000000000000000000
+  theme_id: "000000000"
+  store: my-shop.myshopify.com
+  ignore_files:
+  - node_modules/

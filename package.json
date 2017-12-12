@@ -1,0 +1,44 @@
+{
+  "name": "interglobalvision-single-page-boil",
+  "version": "1.0.0",
+  "description": "Interglobal Vision - Single page boilerplate",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-autoprefixer": "~3.1.1",
+    "gulp-cached": "~1.1.0",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "~2.6.0",
+    "gulp-imagemin": "~3.0.3",
+    "gulp-jscs": "~4.0.0",
+    "gulp-jshint": "~2.0.0",
+    "gulp-minify-css": "~1.2.4",
+    "gulp-notify": "~2.2.0",
+    "gulp-plumber": "~1.1.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-shopify-upload": "~2.0.0",
+    "gulp-sourcemaps": "~2.1.1",
+    "gulp-stylus": "~2.5.0",
+    "gulp-uglify": "~2.0.0",
+    "gulp-util": "~3.0.1",
+    "gulp-watch": "~4.3.5",
+    "gulp-webserver": "~0.9.1",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "~2.2.1",
+    "kouto-swiss": "~0.13.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interglobalvision/interglobalvision-single-page-boil.git"
+  },
+  "author": "interglobalvision",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/interglobalvision/interglobalvision-single-page-boil/issues"
+  },
+  "homepage": "https://github.com/interglobalvision/interglobalvision-single-page-boil"
+}

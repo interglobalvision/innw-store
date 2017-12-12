@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Front page",
+    "settings": [
+      {
+        "type":      "radio",
+        "id":        "radio_option",
+        "label":     "Select Option",
+        "options": [
+          { "value": "option1", "label": "Option 1" },
+          { "value": "option2", "label": "Option 2" }
+        ],
+        "default":   "option1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_option",
+        "label": "Image option"
+      },
+      {
+        "type": "video_url",
+        "id": "youtube_option",
+        "label": "YouTube Option",
+        "accept": ["youtube"]
+      }
+    ]
+  }, {
+    "name": "Contact",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Email",
+        "id": "contact_email"
+      },
+      {
+        "type": "text",
+        "label": "Instagram handle",
+        "id": "contact_instagram"
+      }
+    ]
+  }
+]

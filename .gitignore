@@ -1,0 +1,8 @@
+**/.DS_Store
+**/node_modules
+**/css/site.css
+**/css/site.min.css
+**/js/*.min.js
+**/js/*.min.js.map
+config.yml
+gulpconfig.json

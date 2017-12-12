@@ -1,0 +1,71 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  {% if template == 'index' %}
+  <title>{{ shop.name }} | {{ page_title }}</title>
+  {% elsif template == '404' %}
+  <title>Page Not Found | {{ shop.name }}</title>
+  {% else %}
+  <title>{{ page_title }} | {{ shop.name }}</title>
+  {% endif %}
+  {% if page_description %}
+  <meta name="description" content="{{ page_description }}" />
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}" />
+  <meta name="viewport" content="width=device-width" />
+  {{ content_for_header }}
+  {{ 'site.css' | asset_url | stylesheet_tag }}
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
+</head>
+<body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+  <header id="header">
+    <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
+    <div class="container">
+      <nav class="grid-row font-uppercase">
+        <div class="grid-item item-s-4">
+          <a href="/about">About</a>
+        </div>
+        <div class="grid-item item-s-4 text-align-center">
+          <a href="/">Shop</a>
+        </div>
+        <div class="grid-item item-s-4 text-align-right">
+          <a href="/cart">{% if cart.item_count > 0%}<span>{{ cart.item_count }}</span> {% endif %}Cart</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  {{ content_for_layout }}
+
+  <footer id="footer">
+    <div class="container">
+      <div class="grid-row">
+        <div class="grid-item item-s-12 text-align-center">
+          <h2 class="font-uppercase">Contact</h2>
+        </div>
+      </div>
+      <div class="grid-row justify-end text-align-right">
+        {% if settings.contact_email != blank %}
+        <div class="grid-item item-s-6 item-m-4 item-l-3">
+          <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+        </div>
+        {% endif %}
+        {% if settings.contact_instagram != blank %}
+        <div class="grid-item item-s-6 item-m-4 item-l-3">
+          <a href="https://instagram.com/{{ settings.contact_instagram }}">@{{ settings.contact_instagram }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </footer>
+
+  {{ 'library.js'  | asset_url | script_tag }}
+  {{ 'main.js'  | asset_url | script_tag }}
+</body>
+</html>

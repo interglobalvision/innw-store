@@ -1,0 +1,34 @@
+{% assign exclusions = 'frontpage,all' | split: ',' %}
+{% assign found_a_collection = false %}
+
+{% for c in product.collections %}
+  {% unless exclusions contains c.handle or c.all_products_count < 3 %}
+    {% assign found_a_collection = true %}
+    {% assign collection = c %}
+    {% break %}
+  {% endunless %}
+{% endfor %}
+
+{% if found_a_collection %}
+  {% assign current_product = product %}
+
+  {% capture related_items %}
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+        <div class="related-products-item grid-item item-s-12 item-m-3 text-align-center">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | product_img_url: '300x' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+      {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+
+  <section id="related-products" class="u-hidden">
+    <div class="container">
+      <div class="grid-row justify-center">
+        {{ related_items }}
+      </div>
+    </div>
+  </section>
+{% endif %}

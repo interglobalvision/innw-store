@@ -1,0 +1,23 @@
+{% assign page = pages.frontpage %}
+{{ page.content }}
+{% assign collection = collections.frontpage %}
+
+<section id="products">
+  <div class="container">
+    <div class="grid-row">
+      {% for product in collection.products %}
+      <div class="grid-item item-s-12 item-m-6 item-l-4 text-align-center">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+          <h2>{{ product.title }}</h2>
+          <span>{{ product.price | money_without_trailing_zeros }}</span>
+        </a>
+      </div>
+      {% else %}
+      <div class="grid-item item-s-12">
+        <p>You have no products in your Frontpage Collection</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
