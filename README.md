@@ -12,7 +12,7 @@ Tech this uses [thnx]:
 #### Setup
 - `brew tap shopify/shopify`
 - `brew install themekit`
-- make `config.yml` and `gulpconfig.json` files
+- make `config.yml` file from example
 - `yarn install`
 - `gulp build` or `gulp`
 - `theme upload`

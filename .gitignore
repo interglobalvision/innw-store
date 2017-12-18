@@ -5,4 +5,4 @@
 **/js/*.min.js
 **/js/*.min.js.map
 config.yml
-gulpconfig.json
+theme.lock
