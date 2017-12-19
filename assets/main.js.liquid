@@ -37,33 +37,53 @@ Site = {
 };
 
 Site.Product = {
+  sliderSpeed: 300,
   init: function() {
     var _this = this;
 
     if ($('#product-gallery').length) {
-      _this.setGalleryWidth();
+      _this.initSlider();
     }
 
-    if ($('#related-products').length) {
-      _this.pickRelated();
+    if ($('#product-select').length) {
+      _this.optionSelect();
     }
+
   },
 
-  setGalleryWidth: function() {
-    var galleryWidth = 0;
+  initSlider: function() {
+    var _this = this;
 
-    $('.product-gallery-item').each(function() {
-      galleryWidth += $(this).width();
+    $('#product-gallery').slick({
+      dots: true,
+      arrows: true,
+      infinite: true,
+      speed: _this.sliderSpeed,
+      slidesToShow: 1,
     });
-
-    $('#product-gallery-row').width(galleryWidth);
   },
 
-  pickRelated: function() {
-    $('.related-products-item').pick(4);
+  optionSelect: function() {
+    var _this = this;
 
-    $('#related-products').removeClass('u-hidden');
+    new Shopify.OptionSelectors("product-select", { product: productJson, onVariantSelected: _this.selectCallback });
   },
+
+  selectCallback: function(variant, selector) {
+    if (variant) {
+      if (variant.available) {
+        // Selected a valid variant that is available.
+        $('#add').removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+      } else {
+        // Variant is sold out.
+        $('#add').val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+      }
+    } else {
+      // variant doesn't exist.
+      $('#add').val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+    }
+  }
+
 }
 
 jQuery(document).ready(function () {
