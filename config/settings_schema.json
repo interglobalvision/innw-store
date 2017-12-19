@@ -33,6 +33,11 @@
         "id": "contact_email"
       },
       {
+        "type": "textarea",
+        "label": "Address",
+        "id": "contact_address"
+      },
+      {
         "type": "text",
         "label": "Instagram handle",
         "id": "contact_instagram"
