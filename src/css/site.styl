@@ -110,7 +110,7 @@ $font-size-small = 16px
 $font-size-tiny = 12px
 $font-size-micro = 10px
 
-grid-maker(96%, $gutter, s)
+grid-maker(100%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -133,7 +133,7 @@ font-sizes($font-size-basic, font-size-extra, $font-size-large, $font-size-mid, 
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  grid-maker(680px, $gutter, m)
+  grid-maker(100%, $gutter, m)
 
   font-size($font-size-basic)
 
@@ -155,7 +155,7 @@ font-sizes($font-size-basic, font-size-extra, $font-size-large, $font-size-mid, 
 
   $font-size-basic = 16px
 
-  grid-maker(1000px, $gutter, l)
+  grid-maker(100%, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -166,18 +166,18 @@ font-sizes($font-size-basic, font-size-extra, $font-size-large, $font-size-mid, 
 
   @import 'responsive/desktop'
 
-@media screen and (min-width: 1280px)
-
-  grid-maker(1200px)
-
-@media screen and (min-width: 1366px)
-
-  grid-maker(1300px)
-
-@media screen and (min-width: 1680px)
-
-  grid-maker(1600px)
-
-@media screen and (min-width: 1920px)
-
-  grid-maker(1800px)
+// @media screen and (min-width: 1280px)
+//
+//   grid-maker(96%)
+//
+// @media screen and (min-width: 1366px)
+//
+//   grid-maker(1300px)
+//
+// @media screen and (min-width: 1680px)
+//
+//   grid-maker(1600px)
+//
+// @media screen and (min-width: 1920px)
+//
+//   grid-maker(1800px)
