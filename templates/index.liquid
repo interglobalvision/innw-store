@@ -2,16 +2,14 @@
 {{ page.content }}
 {% assign collection = collections.frontpage %}
 
-<section id="products">
-  <div class="container">
-    <div class="grid-row">
-      {% for product in collection.products %}
-      <div class="grid-item item-s-12 item-m-4 item-l-3 text-align-center">
-        <a href="{{ product.url }}" class="text-align-center">
-          <img src="{{ product.featured_image | product_img_url: 'x376' }}" alt="{{ product.title | escape }}" />
-        </a>
-      </div>
-      {% endfor %}
+<section id="products" class="container">
+  <div class="grid-row">
+    {% for product in collection.products %}
+    <div class="grid-item item-s-12 item-m-4 item-l-3 text-align-center">
+      <a href="{{ product.url }}" class="text-align-center">
+        <img src="{{ product.featured_image | product_img_url: 'x376' }}" alt="{{ product.title | escape }}" />
+      </a>
     </div>
+    {% endfor %}
   </div>
 </section>

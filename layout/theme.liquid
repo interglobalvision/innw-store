@@ -24,7 +24,7 @@
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  <header id="header">
+  <header id="header" class="container">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <nav id="header-nav" class="grid-row">
       <div class="grid-item item-s-3 text-align-center">
