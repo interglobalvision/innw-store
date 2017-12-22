@@ -1,36 +1,38 @@
 <section id="product">
-  <div class="grid-row">
-    <div class="grid-item item-s-12 item-l-6 grid-row">
-      <div class="grid-item item-s-12">
-        <h1>{{ product.title }}</h1>
+  <div class="container">
+    <div class="grid-row">
+      <div class="grid-item item-s-12 item-l-6 grid-row">
+        <div class="grid-item item-s-12">
+          <h1>{{ product.title }}</h1>
+        </div>
+        {% if product.images.size > 1 %}
+        <div id="product-gallery" class="grid-item item-s-12">
+          {% for image in product.images %}
+            {% unless image == product.featured_image %}
+            <div class="product-gallery-item">
+              <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+            </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+        {% endif %}
       </div>
-      {% if product.images.size > 1 %}
-      <div id="product-gallery" class="grid-item item-s-12">
-        {% for image in product.images %}
-          {% unless image == product.featured_image %}
-          <div class="product-gallery-item">
-            <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
-          </div>
-          {% endunless %}
-        {% endfor %}
+      <div class="grid-item item-s-12 item-l-6 grid-row">
+        <div class="grid-item item-s-12">
+          <h2>Product Details</h2>
+        </div>
+        <div class="grid-item item-s-12">
+          {{ product.description }}
+        </div>
+        <form class="grid-item item-s-12 no-gutter grid-row" action="/cart/add" method="post" enctype="multipart/form-data">
+          <select id="product-select" name="id">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}">{{ variant.title }}</option>
+          {% endfor %}
+          </select>
+          <input class="grid-item item-s-6 button disabled" type="submit" name="add" id="add" value="Add to Cart" disabled="disabled">
+        </form>
       </div>
-      {% endif %}
-    </div>
-    <div class="grid-item item-s-12 item-l-6 grid-row">
-      <div class="grid-item item-s-12">
-        <h2>Product Details</h2>
-      </div>
-      <div class="grid-item item-s-12">
-        {{ product.description }}
-      </div>
-      <form class="grid-item item-s-12 no-gutter grid-row" action="/cart/add" method="post" enctype="multipart/form-data">
-        <select id="product-select" name="id">
-        {% for variant in product.variants %}
-          <option value="{{ variant.id }}">{{ variant.title }}</option>
-        {% endfor %}
-        </select>
-        <input class="grid-item item-s-6 button disabled" type="submit" name="add" id="add" value="Add to Cart" disabled="disabled">
-      </form>
     </div>
   </div>
 </section>

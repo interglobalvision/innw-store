@@ -1,5 +1,11 @@
-<ul>
-  {% for article in blog.articles %}
-  <li><a href="{{ article.url }}">{{ article.title }}</a></li>
-  {% endfor %}
-</ul>
+<section class="container">
+  <div class="grid-row">
+    <div class="grid-item item-s-12 item-m-6">
+      <ul>
+        {% for article in blog.articles %}
+        <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,11 @@
-<ul>
-  {% for collection in collections %}
-	<li><a href="{{ collection.url }}">{{ collection.title }}</a>
-  {% endfor %}
-</ul>
+<div class="container">
+  <div class="grid-row">
+    <div class="grid-item item-s-12">
+      <ul>
+        {% for collection in collections %}
+      	<li><a href="{{ collection.url }}">{{ collection.title }}</a>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
