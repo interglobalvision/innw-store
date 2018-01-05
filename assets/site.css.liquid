@@ -1099,7 +1099,19 @@ html,
 .icon {
   height: 20px;
 }
-#menu-nav-holder,
+#menu-nav-holder {
+  pointer-events: none;
+}
+#menu-nav {
+  background: #fff;
+  min-height: calc(100vh - 60px);
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
+  transition: -webkit-transform 150ms;
+  transition: transform 150ms;
+  transition: transform 150ms, -webkit-transform 150ms;
+}
 .menu-close {
   display: none;
 }
@@ -1110,11 +1122,15 @@ html,
   width: 100vw;
   height: 100vh;
   z-index: 900;
+  pointer-events: none;
 }
 #header.menu-active #menu-nav-holder {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  pointer-events: all;
+}
+#header.menu-active #menu-nav {
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
 }
 #header.menu-active .menu-close {
   display: inline-block;
@@ -1124,10 +1140,7 @@ html,
 }
 #header-nav {
   background: #fff;
-}
-#menu-nav {
-  background: #fff;
-  min-height: calc(100vh - 60px);
+  pointer-events: all;
 }
 #main-content {
   margin-top: 60px;
