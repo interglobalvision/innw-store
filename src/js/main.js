@@ -14,6 +14,8 @@ Site = {
       _this.Product.init();
     }
 
+    _this.bindMenuToggle();
+
   },
 
   onResize: function() {
@@ -33,6 +35,13 @@ Site = {
     });
   },
 
+  bindMenuToggle: function() {
+    var $header = $('#header');
+
+    $('.js-menu-toggle').on('click', function() {
+      $header.toggleClass('menu-active');
+    });
+  },
 
 };
 
