@@ -1,0 +1,48 @@
+$header-height = 60px
+
+$border-style = 2px solid $color-black
+
+.border-top
+  border-top: $border-style
+
+.border-right
+  border-right: $border-style
+
+.border-bottom
+  border-bottom: $border-style
+
+.border-left
+  border-left: $border-style
+
+.icon
+  height: 20px
+
+// HEADER
+
+#menu-nav-holder, .menu-close
+  display: none
+
+#header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 900
+  &.menu-active
+    #menu-nav-holder
+      display: flex
+    .menu-close
+      display: inline-block
+    .menu-open
+      display: none
+
+#header-nav
+  background: $color-white
+
+#menu-nav
+  background: $color-white
+  min-height: calc('100vh - ' + $header-height)
+
+#main-content
+  margin-top: $header-height
