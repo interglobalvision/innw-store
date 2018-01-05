@@ -24,44 +24,50 @@
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  <header id="header">
+  <header id="header" class="font-uppercase">
     <div class="container">
       <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
-      <nav id="header-nav" class="grid-row">
-        <div class="grid-item item-s-3 text-align-center">
+      <nav id="header-nav" class="grid-row border-bottom">
+        <div class="grid-item item-s-3 text-align-center padding-top-small padding-bottom-small border-right  js-menu-toggle u-pointer">
           <img src="{{ 'hamburger.png' | asset_url }}" class="icon menu-open" />
           <img src="{{ 'exit_menu.png' | asset_url }}" class="icon menu-close" />
         </div>
-        <div class="grid-item flex-grow text-align-center">
+        <a href="/" class="grid-item flex-grow padding-top-small padding-bottom-small text-align-center">
           <img src="{{ 'INNW_Logo.png' | asset_url }}" class="icon" />
-        </div>
-        <div class="grid-item item-s-3 text-align-center">
-          <a href="/cart"><img src="{{ 'shopping_cart.png' | asset_url }}" class="icon" /></a>
-        </div>
+        </a>
+        <a href="/cart" class="grid-item item-s-3 text-align-center padding-top-small padding-bottom-small border-left">
+          <img src="{{ 'shopping_cart.png' | asset_url }}" class="icon" />
+        </a>
       </nav>
-      <nav id="menu-nav" class="grid-column">
-        <div class="grid-item text-align-center">
-          <a href="/">Shop</a>
+      <nav id="menu-nav-holder" class="grid-row">
+        <div id="menu-nav" class="grid-item item-s-12 item-l-3 no-gutter grid-column justify-between">
+          <div class="grid-item no-gutter grid-row text-align-center">
+            <div class="grid-item item-s-12 no-gutter padding-top-small padding-bottom-small border-bottom">
+              <a href="/">Shop</a>
+            </div>
+            <div class="grid-item item-s-12 no-gutter padding-top-small padding-bottom-small border-bottom">
+              <a href="/blogs/program">Program</a>
+            </div>
+            <div class="grid-item item-s-12 no-gutter padding-top-small padding-bottom-small border-bottom">
+              <a href="/blogs/donations">Donations</a>
+            </div>
+            <div class="grid-item item-s-12 no-gutter padding-top-small padding-bottom-small border-bottom">
+              <a href="/pages/about">About</a>
+            </div>
+          </div>
+          {% if settings.contact_instagram != blank %}
+          <div class="grid-item padding-top-small padding-bottom-small text-align-center">
+            <a href="https://instagram.com/{{ settings.contact_instagram }}"><img src="{{ 'instagram.png' | asset_url }}" class="icon" /></a>
+          </div>
+          {% endif %}
         </div>
-        <div class="grid-item text-align-center">
-          <a href="/blogs/program">Program</a>
-        </div>
-        <div class="grid-item text-align-center">
-          <a href="/blogs/donations">Donations</a>
-        </div>
-        <div class="grid-item text-align-center">
-          <a href="/pages/about">About</a>
-        </div>
-        {% if settings.contact_instagram != blank %}
-        <div class="grid-item text-align-center">
-          <a href="https://instagram.com/{{ settings.contact_instagram }}"><img src="{{ 'instagram.png' | asset_url }}" class="icon" /></a>
-        </div>
-        {% endif %}
       </nav>
     </div>
   </header>
 
-  {{ content_for_layout }}
+  <main id="main-content">
+    {{ content_for_layout }}
+  </main>
 
   <footer id="footer">
   </footer>
