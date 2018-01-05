@@ -29,13 +29,14 @@
       <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
       <nav id="header-nav" class="grid-row">
         <div class="grid-item item-s-3 text-align-center">
-          Menu
+          <img src="{{ 'hamburger.png' | asset_url }}" class="icon menu-open" />
+          <img src="{{ 'exit_menu.png' | asset_url }}" class="icon menu-close" />
         </div>
         <div class="grid-item flex-grow text-align-center">
-          INNW
+          <img src="{{ 'INNW_Logo.png' | asset_url }}" class="icon" />
         </div>
         <div class="grid-item item-s-3 text-align-center">
-          <a href="/cart">Cart</a>
+          <a href="/cart"><img src="{{ 'shopping_cart.png' | asset_url }}" class="icon" /></a>
         </div>
       </nav>
       <nav id="menu-nav" class="grid-column">
@@ -53,7 +54,7 @@
         </div>
         {% if settings.contact_instagram != blank %}
         <div class="grid-item text-align-center">
-          <a href="https://instagram.com/{{ settings.contact_instagram }}">Instagram</a>
+          <a href="https://instagram.com/{{ settings.contact_instagram }}"><img src="{{ 'instagram.png' | asset_url }}" class="icon" /></a>
         </div>
         {% endif %}
       </nav>
