@@ -687,6 +687,12 @@ template {
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
+@font-face {
+  font-family: 'Andale Mono';
+  src: url("AndaleMono.woff2") format('woff2'), url("AndaleMono.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 h1,
 h2,
 h3,
@@ -741,7 +747,7 @@ p a {
   text-decoration: underline;
 }
 html {
-  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  font-family: "Andale Mono", AndaleMono, monospace;
   letter-spacing: 0.001em;
 }
 body {
@@ -754,7 +760,7 @@ body {
   font-family: Georgia, Times, "Times New Roman", serif;
 }
 .font-mono {
-  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  font-family: "Andale Mono", AndaleMono, monospace;
 }
 .font-larger {
   font-size: 1.3rem;
