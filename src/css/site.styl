@@ -26,6 +26,7 @@ normalize()
 
 $font-sans = font-stack('Helvetica');
 $font-serif = font-stack('Georgia');
+$font-mono = font-stack('Monaco');
 
 // ******************************************************
 
@@ -43,7 +44,7 @@ $font-tracking-basic = .001em
 $font-tracking-wider = .05em
 
 html
-  font-family: $font-sans
+  font-family: $font-mono
   letter-spacing: $font-tracking-basic
 
 body
@@ -54,6 +55,9 @@ body
 
 .font-serif
   font-family: $font-serif
+
+.font-mono
+  font-family: $font-mono
 
 .font-larger
   font-size: $font-size-larger
@@ -93,7 +97,7 @@ img
 
 // MEDIA QUERIES
 
-$gutter = 14px
+$gutter = 17px
 
 $margin-micro = ($gutter / 3)
 $margin-tiny = ($gutter / 2)
@@ -102,7 +106,7 @@ $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
-$font-size-basic = 12px
+$font-size-basic = 14px
 $font-size-extra = 36px
 $font-size-large = 28px
 $font-size-mid = 21px
@@ -129,13 +133,13 @@ font-sizes($font-size-basic, font-size-extra, $font-size-large, $font-size-mid, 
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 14px
-
-  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
+  $font-size-basic = 16px
 
   grid-maker(100%, $gutter, m)
 
-  font-size($font-size-basic)
+  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
+
+  font-sizes($font-size-basic)
 
   .mobile-only
     display: none !important
@@ -153,13 +157,13 @@ font-sizes($font-size-basic, font-size-extra, $font-size-large, $font-size-mid, 
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 16px
+  $font-size-basic = 18px
 
   grid-maker(100%, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  font-size($font-size-basic)
+  font-sizes($font-size-basic)
 
   .desktop-only
     display: initial !important
