@@ -38,8 +38,19 @@ Site = {
   bindMenuToggle: function() {
     var $header = $('#header');
 
+    // toggle side menu on hamburger/X click
     $('.js-menu-toggle').on('click', function() {
       $header.toggleClass('menu-active');
+    });
+
+    // hide side menu when click on "page area" of side nav holder
+    $('#menu-nav-holder').on('click', function() {
+      $header.toggleClass('menu-active');
+    });
+
+    // stop clicks on side nav from bubbling up to parent #menu-nav-holder
+    $('#menu-nav').on('click', function(e) {
+      e.stopPropagation();
     });
   },
 
