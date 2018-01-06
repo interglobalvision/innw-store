@@ -1,36 +1,62 @@
-<section id="product">
+<section id="product" class="font-uppercase details-active">
   <div class="container">
-    <div class="grid-row">
-      <div class="grid-item item-s-12 item-l-6 grid-row">
-        <div class="grid-item item-s-12">
-          <h1>{{ product.title }}</h1>
+    <div id="product-row" class="grid-row">
+      <div class="grid-item item-s-12 item-l-6 grid-column no-gutter">
+        <div class="grid-item border-bottom padding-top-small padding-bottom-small">
+          <h1 class="font-size-basic text-align-center">{{ product.title }}</h1>
         </div>
         {% if product.images.size > 1 %}
-        <div id="product-gallery" class="grid-item item-s-12">
-          {% for image in product.images %}
-            {% unless image == product.featured_image %}
-            <div class="product-gallery-item">
-              <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+        <div id="product-gallery-holder" class="grid-item no-gutter flex-grow padding-top-small padding-bottom-small grid-row justify-center align-items-center">
+          <div class="grid-item item-s-12 no-gutter">
+            <div id="product-gallery">
+            {% for image in product.images %}
+              {% unless image == product.featured_image %}
+              <div class="product-gallery-item">
+                <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+              </div>
+              {% endunless %}
+            {% endfor %}
             </div>
-            {% endunless %}
-          {% endfor %}
+            <img src="{{ 'product_left.png' | asset_url }}" class="gallery-arrow gallery-prev" />
+            <img src="{{ 'product_right.png' | asset_url }}" class="gallery-arrow gallery-next" />
+          </div>
         </div>
         {% endif %}
       </div>
-      <div class="grid-item item-s-12 item-l-6 grid-row">
-        <div class="grid-item item-s-12">
-          <h2>Product Details</h2>
+
+      <div id="product-details-column" class="grid-item item-s-12 item-l-6 grid-column no-gutter align-items-start">
+
+        <div id="product-details-holder" class="grid-item no-gutter grid-column">
+          <div id="product-details-header" class="grid-item border-bottom padding-top-small padding-bottom-small grid-row no-gutter js-toggle-details align-items-center">
+            <div class="grid-item item-s-6 offset-s-2">
+              <h2>Product Details</h2>
+            </div>
+            <div class="grid-item item-s-2 dropdown-icon-holder">
+              <img src="{{ 'drop_down.png' | asset_url }}" class="icon-small show-details" />
+              <span class="hide-details">—</span>
+            </div>
+          </div>
+
+          <div id="product-details" class="grid-item">
+            <div class="grid-row padding-top-mid padding-bottom-mid">
+              <div class="grid-item item-s-8 offset-s-2">
+                {{ product.description }}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid-item item-s-12">
-          {{ product.description }}
-        </div>
-        <form class="grid-item item-s-12 no-gutter grid-row" action="/cart/add" method="post" enctype="multipart/form-data">
+
+        <form id="cart-form" class="grid-item no-gutter grid-row" action="/cart/add" method="post" enctype="multipart/form-data">
+          <div class="grid-item item-s-2 dropdown-icon-holder select-icon-holder">
+            <img src="{{ 'drop_down.png' | asset_url }}" class="icon-small" />
+          </div>
+
           <select id="product-select" name="id">
           {% for variant in product.variants %}
             <option value="{{ variant.id }}">{{ variant.title }}</option>
           {% endfor %}
           </select>
-          <input class="grid-item item-s-6 button disabled" type="submit" name="add" id="add" value="Add to Cart" disabled="disabled">
+          <input id="add-to-cart" class="grid-item item-s-6 button disabled padding-top-basic padding-bottom-basic font-uppercase border-left font-mono" type="submit" name="add" id="add" value="Add to Cart" disabled="disabled">
         </form>
       </div>
     </div>
