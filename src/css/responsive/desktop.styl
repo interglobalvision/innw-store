@@ -1,4 +1,4 @@
-$header-height = 84px
+$header-height = 83px
 
 // HEADER
 
@@ -8,3 +8,68 @@ $header-height = 84px
 
 #main-content
   margin-top: $header-height
+
+.dropdown-icon-holder
+  text-align: center
+
+// PRODUCT
+
+#product
+  #product-row
+    min-height: calc('100vh - ' + $header-height)
+
+#product-details-column
+  border-right: $border-style
+  border-top: 0
+  order: -1
+  align-self: initial
+
+#product-details-header
+  cursor: default
+
+#product-details-holder
+  flex-basis: auto
+  flex-grow: 1
+
+#product-details
+  height: auto
+  flex-basis: auto
+  flex-grow: 1
+
+.hide-details
+  display: none
+
+.show-details
+  display: none
+
+#product
+  &.details-active
+    #product-details
+      height: auto
+      flex-basis: auto
+      flex-grow: 1
+    .hide-details
+      display: none
+    .show-details
+      display: none
+
+.product-gallery-item
+  padding: 0 $margin-small
+  img
+    max-width: 30vw
+
+.gallery-prev
+  left: $margin-basic
+
+.gallery-next
+  right: $margin-basic
+
+$dot-diameter = 18px
+
+.slick-dots
+  margin-top: $margin-tiny
+  li
+    margin: 0 $margin-micro
+    width: $dot-diameter
+    height: $dot-diameter
+    border-radius: $dot-diameter

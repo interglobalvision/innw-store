@@ -1,7 +1,4 @@
-$header-height = 78px
-
-.icon
-  height: 30px
+$header-height = 73px
 
 // HEADER
 
@@ -10,3 +7,28 @@ $header-height = 78px
 
 #main-content
   margin-top: $header-height
+
+// PRODUCT
+
+#product
+  #product-row
+    min-height: calc('100vh - ' + $header-height)
+
+.product-gallery-item
+  padding: 0 $margin-small
+
+.gallery-prev
+  left: $margin-basic
+
+.gallery-next
+  right: $margin-basic
+
+$dot-diameter = 16px
+
+.slick-dots
+  margin-top: $margin-tiny
+  li
+    margin: 0 $margin-micro
+    width: $dot-diameter
+    height: $dot-diameter
+    border-radius: $dot-diameter
