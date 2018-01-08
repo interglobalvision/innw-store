@@ -100,6 +100,7 @@ Site.Product = {
     _this.selectsStyled = false;
 
     new Shopify.OptionSelectors("product-select", { product: productJson, onVariantSelected: _this.selectCallback.bind(this) });
+    // Callback fires on init and on change to variant select values 
   },
 
   styleVariantSelects: function() {
