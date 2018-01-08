@@ -1,6 +1,8 @@
-$header-height = 60px
+$header-height = 61px
 
 $border-style = 2px solid $color-black
+
+$slider-dot-diameter = .8em
 
 .border-top
   border-top: $border-style
@@ -15,7 +17,24 @@ $border-style = 2px solid $color-black
   border-left: $border-style
 
 .icon
-  height: 20px
+  height: 1.5em
+
+.icon-small
+  height: 1em
+
+.dropdown-icon-holder
+  text-align: right
+
+li
+  list-style-type: disc
+
+button, input
+  appearance: none
+  border: 0
+  color: $color-black
+  background: $color-white
+  &[disabled='disabled']
+    color: rgba(0,0,0,.5)
 
 // HEADER
 
@@ -30,6 +49,9 @@ $border-style = 2px solid $color-black
 
 .menu-close
   display: none
+
+.menu-open
+  display: inline-block
 
 #header
   position: fixed
@@ -55,3 +77,150 @@ $border-style = 2px solid $color-black
 
 #main-content
   margin-top: $header-height
+
+// PRODUCT
+
+#product
+  #product-row
+    min-height: calc('100vh - ' + $header-height)
+
+.hide-details
+  display: none
+
+.show-details
+  display: inline-block
+
+#product-details-column
+  border-top: $border-style
+  align-self: flex-end
+
+#product-details-holder
+  width: 100%
+
+#product-details-header
+  cursor: pointer
+
+#product-details
+  height: 0
+  flex-basis: 0
+  flex-grow: 0
+  overflow: hidden
+  border-bottom: 0
+
+#product
+  &.details-active
+    #product-details-holder
+      flex-basis: auto
+      flex-grow: 1
+    #product-details
+      height: auto
+      flex-basis: auto
+      flex-grow: 1
+      border-bottom: $border-style
+    .hide-details
+      display: inline-block
+    .show-details
+      display: none
+
+#cart-form
+  width: 100%
+
+#price-wrapper
+  overflow: hidden
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 200
+    background-image: linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,1))
+    pointer-events: none
+
+#price-display-wrapper
+  margin: auto
+  position: absolute
+  top: 0
+  bottom: 0
+  width: 100%
+  transition: height 150ms
+  &:before
+    content: "—"
+    position: absolute
+    left: 30%
+  &:after
+    content: "—"
+    position: absolute
+    right: 30%
+
+#price-display
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  text-align: center
+  overflow: hidden
+  transition: transform 150ms
+
+select
+  appearance: none
+  background: $color-white
+  border: 0
+  font-family: $font-mono
+  &:focus
+    outline: none
+  &.full-select
+    position: absolute
+    width: 100%
+    height: 100%
+    opacity: 0
+    z-index: 100
+    cursor: pointer
+
+.slick-slide
+  cursor: pointer
+  &.slick-active
+    cursor: default
+
+.product-gallery-item
+  padding: 0 $margin-tiny
+  img
+    max-width: 70vw
+
+.gallery-arrow
+  position: absolute
+  top: 45%
+  z-index: 200
+  width: 1em
+  cursor: pointer
+
+.gallery-prev
+  left: $margin-small
+
+.gallery-next
+  right: $margin-small
+
+.slick-dots
+  text-align: center
+  margin-top: $margin-tiny
+  li
+    display: inline-block
+    margin: 0 $margin-micro
+    width: $slider-dot-diameter
+    height: $slider-dot-diameter
+    background-color: $color-white
+    border-radius: $slider-dot-diameter
+    border: $border-style
+    color: transparent
+    font-size: 0
+    cursor: pointer
+    button
+      appearance: none
+      width: 100%
+      height: 100%
+      visibility: hidden
+      &:focus
+        outline: none
+    &.slick-active
+      background-color: $color-black
