@@ -2,6 +2,8 @@ $header-height = 61px
 
 $border-style = 2px solid $color-black
 
+$slider-dot-diameter = .8em
+
 .border-top
   border-top: $border-style
 
@@ -199,18 +201,16 @@ select
 .gallery-next
   right: $margin-small
 
-$dot-diameter = 14px
-
 .slick-dots
   text-align: center
   margin-top: $margin-tiny
   li
     display: inline-block
     margin: 0 $margin-micro
-    width: $dot-diameter
-    height: $dot-diameter
+    width: $slider-dot-diameter
+    height: $slider-dot-diameter
     background-color: $color-white
-    border-radius: $dot-diameter
+    border-radius: $slider-dot-diameter
     border: $border-style
     color: transparent
     font-size: 0
