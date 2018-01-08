@@ -1,39 +1,62 @@
-<section class="container">
-  <div class="grid-row">
-    <div class="grid-item item-s-12 item-m-6">
-      {% if cart.item_count > 0 %}
-      <form action="/cart" method="post" id="cart" class="cart">
-        <table>
-          <tr>
-            <th class="item desc"></th>
-            <th class="item price">Price</th>
-            <th class="item qty">Quantity</th>
-            <th class="item remove">Delete</th>
-            <th class="item total">Total</th>
-          </tr>
-          {% for item in cart.items %}
-          <tr id="cart-item-{{item.variant.id}}" class="cart-item">
-            <td class="item desc"><a href="/collections/{{ item.product.collections.first.title | downcase }}#{{ item.product.handle }}">{{ item.title }}</a></td>
-            <td class="item price">{{ item.price | money }}</td>
-            <td class="item qty"><input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/></td>
-            <td class="item remove"><a href="/cart/change/{{item.variant.id}}?quantity=0">Remove</a></td>
-            <td class="item price">{{ item.line_price | money }}</td>
-          </tr>
-          {% endfor %}
-          <tr class="subtotal">
-            <td colspan="5">Total: <strong>{{ cart.total_price | money }}</strong></td>
-          </tr>
-          <tr class="actions">
-            <td colspan="5">
-              <input class="button" type="submit" id="update-cart" name="update" value="Update"  />
-              <input class="button" type="submit" name="checkout" value="Checkout" />
-            </td>
-          </tr>
-        </table>
-      </form>
-      {% else %}
-      <p>Your cart is empty!</p>
-      {% endif %}
-    </div>
+<section id="cart" class="font-uppercase">
+  <h1 class="text-align-center padding-top-small padding-bottom-small">Cart</h1>
+  <div class="container">
+    {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" id="cart" class="cart grid-row">
+      <div class="grid-item item-s-12 item-l-6 no-gutter grid-row align-items-start">
+        {% for item in cart.items %}
+        {% assign variant_price = item.price | money %}
+        <div id="cart-item-{{item.variant.id}}" class="cart-item grid-item item-s-12 padding-top-small padding-bottom-small no-gutter grid-row align-items-center">
+          <div class="grid-item item-s-3 item-l-2">
+            <input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="form-element quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
+          </div>
+          <div class="grid-item item-s-2 item-l-3">
+            <a href="{{ item.product.url }}">
+              {% if item.variant.image != blank %}
+                <img src="{{ item.variant.image | img_url: '300x300' }}" alt="{{ item.title | escape }}" />
+              {% else %}
+                <img src="{{ item.image | img_url: '300x300' }}" alt="{{ item.title | escape }}" />
+              {% endif %}
+            </a>
+          </div>
+          <div class="grid-item item-s-4">
+            <div class="margin-bottom-micro">
+              <a href="{{ item.product.url }}">{{ item.product.title }}</a>
+            </div>
+            {% if item.variant.option1 != variant_price %}
+              {{ item.variant.option1 }}
+              {% if item.variant.option2 != variant_price %}
+                / {{ item.variant.option2 }}
+                {% if item.variant.option3 != variant_price %}
+                  / {{ item.variant.option3 }}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="grid-item item-s-3 text-align-right">
+            {{ item.price | money }} <a href="/cart/change/{{item.variant.id}}?quantity=0">X</a>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="grid-item item-s-12 align-self-end text-align-right">
+          <a href="/">< Back to shop</a>
+        </div>
+      </div>
+
+      <div class="grid-item item-s-12 item-l-6 no-gutter grid-row align-items-end">
+        <div class="grid-item item-s-12 text-align-right font-uppercase">
+          Subtotal: {{ cart.total_price | money }}
+        </div>
+      </div>
+
+      <div class="grid-item item-s-12 item-l-6 offset-l-6 no-gutter grid-row">
+        <input class="button item-s-6 font-uppercase" type="submit" id="update-cart" name="update" value="Update Cart" title="Update Cart" />
+        <input class="button item-s-6 font-uppercase" type="submit" id="cart-checkout" name="checkout" value="Checkout" />
+      </div>
+
+    </form>
+    {% else %}
+    <p>Your cart is empty!</p>
+    {% endif %}
   </div>
-</div>
+</section>
