@@ -1,5 +1,5 @@
 <div class="grid-row center-border full-height">
-  <div class="grid-item item-s-6 desktop-only">
+  <div class="grid-item item-s-6 desktop-only padding-top-small padding-bottom-small">
   {% for article in blog.articles %}
     {% assign mod = forloop.index | modulo: 2 %}
     {% if mod == 1 %}
@@ -8,13 +8,13 @@
   {% endfor %}
   </div>
 
-  <div class="grid-item item-s-12 mobile-only">
+  <div class="grid-item item-s-12 mobile-only  padding-top-small padding-bottom-small">
   {% for article in blog.articles %}
     {% include 'article-program' %}
   {% endfor %}
   </div>
 
-  <div class="grid-item item-s-6 desktop-only">
+  <div class="grid-item item-s-6 desktop-only padding-top-small padding-bottom-small">
   {% for article in blog.articles %}
     {% assign mod = forloop.index | modulo: 2 %}
     {% if mod == 0 %}
