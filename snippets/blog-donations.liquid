@@ -1,0 +1,24 @@
+{% assign month = '' %}
+{% assign year = '' %}
+
+<div class="grid-row">
+  <div class="u-hidden">
+  {% for article in blog.articles %}
+  {% assign newMonth = article.published_at | date: '%B' %}
+  {% assign newYear = article.published_at | date: '%y' %}
+
+  {% if month != newMonth or year != newYear %}
+    {% assign month = newMonth %}
+    {% assign year = newYear %}
+  </div> <!-- close previous month, or u-hidden div from above -->
+  <div class="donation-holder grid-item item-s-12 item-m-6 grid-row no-gutter font-uppercase">
+    <div class="donation-month grid-item item-s-12 item-m-6 text-align-center padding-top-small padding-bottom-small margin-bottom-small">
+      {{ month }} '{{ year }}
+    </div>
+    {% include 'article-donations' %}
+  {% else %}
+    {% include 'article-donations' %}
+  {% endif %}
+  {% endfor %}
+  </div>
+</div>

@@ -1,43 +1,26 @@
-{% if blog.title == 'Donations' %}
-  {% assign month = '' %}
-  {% assign year = '' %}
-{% endif %}
 <section id="blog">
-  <h1 class="font-uppercase text-align-center padding-top-small padding-bottom-small">{{ blog.title }}</h1>
   <div class="container">
     <div class="grid-row">
-    {% if blog.title == 'Donations' %}
-      <div class="u-hidden">
-    {% endif %}
-
-    {% for article in blog.articles %}
-
-    {% if blog.title == 'Program' %}
-      {% include 'article-program' %}
-
-    {% else if blog.title == 'Donations' %}
-      {% assign newMonth = article.published_at | date: '%B' %}
-      {% assign newYear = article.published_at | date: '%y' %}
-
-      {% if month != newMonth or year != newYear %}
-        {% assign month = newMonth %}
-        {% assign year = newYear %}
-      </div> <!-- close previous month, or u-hidden div from above -->
-      <div class="donation-holder grid-item item-s-12 item-m-6 grid-row no-gutter font-uppercase">
-        <div class="donation-month grid-item item-s-12 item-m-6 text-align-center padding-top-small padding-bottom-small margin-bottom-small">
-          {{ month }} '{{ year }}
-        </div>
-        {% include 'article-donations' %}
-      {% else %}
-        {% include 'article-donations' %}
-      {% endif %}
-
-    {% else %}
-      <div class="article grid-item">
-        <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+      <div class="grid-item item-s-12 padding-top-small padding-bottom-small border-bottom">
+        <h1 class="font-uppercase text-align-center font-size-mid">{{ blog.title }}</h1>
       </div>
-    {% endif %}
-    {% endfor %}
     </div>
+
+  {% if blog.title == 'Program' %}
+    {% include 'blog-program' %}
+
+  {% else if blog.title == 'Donations' %}
+    {% include 'blog-donations' %}
+
+  {% else %}
+    <div class="grid-row">
+      {% for article in blog.articles %}
+        <div class="article grid-item">
+          <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% endif %}
   </div>
 </div>
