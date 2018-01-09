@@ -1,9 +1,21 @@
 $header-height = 83px
 
+.full-height
+  min-height: calc('100vh - ' + $header-height)
+
+.center-border > div:first-child
+  border-right: 1px solid $color-black
+.center-border > div:last-child
+  border-left: 1px solid $color-black
+
+.center-border-reversed > div:first-child
+  border-left: 1px solid $color-black
+.center-border-reversed > div:last-child
+  border-right: 1px solid $color-black
+
 // HEADER
 
 #menu-nav
-  min-height: calc('100vh - ' + $header-height)
   border-right: $border-style
 
 #main-content
@@ -14,12 +26,7 @@ $header-height = 83px
 
 // PRODUCT
 
-#product
-  #product-row
-    min-height: calc('100vh - ' + $header-height)
-
 #product-details-column
-  border-right: $border-style
   border-top: 0
   order: -1
   align-self: initial
@@ -68,6 +75,12 @@ $header-height = 83px
   margin-top: $margin-tiny
   li
     margin: 0 $margin-micro
-    width: $slider-dot-diameter
-    height: $slider-dot-diameter
-    border-radius: $slider-dot-diameter
+
+// ABOUT
+
+#page-about-content
+  padding-bottom: $margin-small
+
+#page-about-contact
+  text-align: center
+  align-self: center
