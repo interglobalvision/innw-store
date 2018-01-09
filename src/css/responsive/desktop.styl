@@ -3,15 +3,18 @@ $header-height = 83px
 .full-height
   min-height: calc('100vh - ' + $header-height)
 
-.center-border > div:first-child
-  border-right: 1px solid $color-black
-.center-border > div:last-child
-  border-left: 1px solid $color-black
+.center-border
+  & > div:first-child
+    border-right: 1px solid $color-black
 
-.center-border-reversed > div:first-child
-  border-left: 1px solid $color-black
-.center-border-reversed > div:last-child
-  border-right: 1px solid $color-black
+  & > div:last-child
+    border-left: 1px solid $color-black
+
+.center-border-reversed
+  & > div:first-child
+    border-left: 1px solid $color-black
+  & > div:last-child
+    border-right: 1px solid $color-black
 
 // HEADER
 
