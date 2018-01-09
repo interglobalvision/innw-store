@@ -1,9 +1,9 @@
 <section id="product" class="font-uppercase details-active">
   <div class="container">
-    <div id="product-row" class="grid-row">
+    <div id="product-row" class="grid-row full-height center-border-reversed">
       <div class="grid-item item-s-12 item-l-6 grid-column no-gutter">
         <div class="grid-item border-bottom padding-top-small padding-bottom-small">
-          <h1 class="font-size-basic text-align-center">{{ product.title }}</h1>
+          <h1 class="font-size-mid text-align-center">{{ product.title }}</h1>
         </div>
         {% if product.images.size > 1 %}
         <div id="product-gallery-holder" class="grid-item no-gutter flex-grow padding-top-small padding-bottom-small grid-row justify-center align-items-center">
@@ -29,7 +29,7 @@
         <div id="product-details-holder" class="grid-item no-gutter grid-column">
           <div id="product-details-header" class="grid-item border-bottom padding-top-small padding-bottom-small grid-row no-gutter js-toggle-details align-items-center">
             <div class="grid-item item-s-6 offset-s-2">
-              <h2>Product Details</h2>
+              <h2 class="font-size-mid">Product Details</h2>
             </div>
             <div class="grid-item item-s-2 dropdown-icon-holder">
               <img src="{{ 'drop_down.png' | asset_url }}" class="icon-small show-details" />
@@ -46,7 +46,7 @@
           </div>
         </div>
 
-        <form id="cart-form" class="grid-item no-gutter grid-row" action="/cart/add" method="post" enctype="multipart/form-data">
+        <form id="cart-form" class="grid-item no-gutter grid-row font-size-mid" action="/cart/add" method="post" enctype="multipart/form-data">
           <div class="grid-item item-s-2 dropdown-icon-holder select-icon-holder">
             <img src="{{ 'drop_down.png' | asset_url }}" class="icon-small" />
           </div>
@@ -56,7 +56,7 @@
             <option value="{{ variant.id }}">{{ variant.title }}</option>
           {% endfor %}
           </select>
-          <input id="add-to-cart" class="grid-item item-s-6 button disabled padding-top-basic padding-bottom-basic font-uppercase border-left font-mono" type="submit" name="add" id="add" value="Add to Cart" disabled="disabled">
+          <input id="add-to-cart" class="grid-item item-s-6 button disabled padding-top-basic padding-bottom-basic font-uppercase border-left font-mono font-size-mid" type="submit" name="add" id="add" value="Add to Cart" disabled="disabled">
         </form>
       </div>
     </div>
