@@ -141,9 +141,6 @@ font-sizes($font-size-basic, font-size-extra, $font-size-large, $font-size-mid, 
 
   font-sizes($font-size-basic)
 
-  .mobile-only
-    display: none !important
-
   @import 'responsive/tablet'
 
 @media screen and (min-width: 1024px)
@@ -164,6 +161,9 @@ font-sizes($font-size-basic, font-size-extra, $font-size-large, $font-size-mid, 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
   font-sizes($font-size-basic)
+
+  .mobile-only
+    display: none !important
 
   .desktop-only
     display: initial !important
