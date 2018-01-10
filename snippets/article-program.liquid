@@ -1,5 +1,5 @@
 <div class="grid-row">
-  <div class="article grid-item item-s-10 offset-s-1 padding-top-small padding-bottom-small">
+  <article class="article grid-item item-s-10 offset-s-1 padding-top-small padding-bottom-small">
     {% if article.image %}
     <div class="margin-bottom-micro">
       <img src="{{ article | img_url: 'grande' }}" />
@@ -8,5 +8,5 @@
     <span class="font-size-small">{{ article.published_at | date: '%m/%d/%C%y' }}</span>
     <h2 class="font-uppercase margin-bottom-small font-size-mid">{{ article.title }}</h2>
     {{ article.content }}
-  </div>
+  </article>
 </div>

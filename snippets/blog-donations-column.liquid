@@ -1,8 +1,8 @@
-<div class="grid-row full-height">
+{% assign month = '' %}
+{% assign year = '' %}
+{% assign count = 0 %}
 
-{% comment %} Mobile blog {% endcomment %}
-
-  <div class="grid-item item-s-12 mobile-only grid-row no-gutter">
+  <div class="grid-item item-s-6 desktop-only border-{{ columnBorder }}-half grid-row no-gutter">
     <div class="u-hidden">
 
 {% for article in blog.articles %}
@@ -12,10 +12,19 @@
   {% if month != newMonth or year != newYear %}
   {% comment %} New month {% endcomment %}
 
+    {% if count == 0 or mod != 1 %}
+    {% comment %} Close hidden <div> or last month {% endcomment %}
     </div>
+    {% endif %}
+
+    {% assign count = count | plus: 1 %}
+    {% assign mod = count | modulo: 2 %}
 
     {% assign month = newMonth %}
     {% assign year = newYear %}
+
+    {% if mod == modCheck %}
+    {% comment %} Is Even/Odd month {% endcomment %}
 
     <div class="donation-holder grid-item item-s-12 grid-row no-gutter font-uppercase border-bottom padding-bottom-small">
       <div class="donation-month-holder grid-item item-s-12 no-gutter grid-row padding-top-small padding-bottom-small margin-bottom-small border-bottom">
@@ -25,24 +34,15 @@
       </div>
       {% include 'article-donations' %}
 
+    {% endif %}
+
   {% else %}
-    {% include 'article-donations' %}
+    {% if mod == modCheck %}
+    {% comment %} Same month {% endcomment %}
+      {% include 'article-donations' %}
+    {% endif %}
   {% endif %}
 
 {% endfor %}
     </div> {% comment %} Close final month {% endcomment %}
   </div>
-
-{% comment %} Desktop blog. Months are split even/odd between columns {% endcomment %}
-
-  {% comment %} modCheck is modulo to compare counter against {% endcomment %}
-
-  {% assign modCheck = 1 %}
-  {% assign columnBorder = 'right' %}
-  {% include 'blog-donations-column' %}
-
-  {% assign modCheck = 0 %}
-  {% assign columnBorder = 'left' %}
-  {% include 'blog-donations-column' %}
-
-</div>
