@@ -5,13 +5,13 @@
         <h1 class="font-size-mid text-align-center font-uppercase">{{ page.title }}</h1>
       </div>
     </div>
-    <div class="grid-row center-border full-height">
-      <div class="grid-item item-s-12 item-l-6 grid-row no-gutter">
+    <div class="grid-row full-height">
+      <div class="grid-item item-s-12 item-l-6 grid-row no-gutter border-right-half">
         <div id="page-about-content" class="grid-item item-s-10 offset-s-1 padding-top-small">
           {{ page.content }}
         </div>
       </div>
-      <div class="grid-item item-s-12 item-l-6 grid-row no-gutter">
+      <div class="grid-item item-s-12 item-l-6 grid-row no-gutter border-left-half">
         <div id="page-about-contact" class="grid-item item-s-10 offset-s-1 padding-top-small padding-bottom-small">
           {% if settings.contact_email != blank %}
           <h2 class="font-uppercase">General Inquiries</h2>
