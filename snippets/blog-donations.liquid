@@ -1,5 +1,7 @@
 <div class="grid-row full-height">
 
+{% comment %} Mobile blog {% endcomment %}
+
   <div class="grid-item item-s-12 mobile-only grid-row no-gutter">
     <div class="u-hidden">
 
@@ -30,6 +32,8 @@
 {% endfor %}
     </div> {% comment %} Close final month {% endcomment %}
   </div>
+
+{% comment %} Desktop blog. Months are split even/odd between columns {% endcomment %}
 
   {% comment %} modCheck is modulo to compare counter against {% endcomment %}
 
