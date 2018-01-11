@@ -100,6 +100,9 @@ Site.Product = {
 
     new Shopify.OptionSelectors("product-select", { product: productJson, onVariantSelected: _this.selectCallback.bind(this) });
     // Callback fires on init and on change to variant select values
+
+    // Trigger option change to update product with initial price
+    $('.single-option-selector').last().trigger('change');
   },
 
   styleVariantSelects: function() {
@@ -218,14 +221,14 @@ Site.Product = {
 
       if (variant.available) {
         // Selected a valid variant that is available.
-        $('#add').removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+        $('#add-to-cart').removeClass('disabled').removeAttr('disabled').val('Add to Cart');
       } else {
         // Variant is sold out.
-        $('#add').val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+        $('#add-to-cart').val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
       }
     } else {
       // variant doesn't exist.
-      $('#add').val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+      $('#add-to-cart').val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
     }
 
   },
