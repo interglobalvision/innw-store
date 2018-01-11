@@ -106,6 +106,7 @@ Site.Product = {
     var _this = this;
 
     var $selectorWrapper = $('.selector-wrapper');
+    var $priceWrapper = $selectorWrapper.last();
 
     var $dropDownIcon = $('.select-icon-holder');
     var $addToCart = $('#add-to-cart');
@@ -145,7 +146,6 @@ Site.Product = {
     $addToCart.appendTo($endRow);
 
     if ($selectorWrapper.text() !== 'Default Title') {
-      var $priceWrapper = $selectorWrapper.last();
 
       // Put Price option in last row and add styling classes and id
       $priceWrapper.prependTo($endRow).addClass('grid-item item-s-6 no-gutter').attr('id','price-wrapper');
