@@ -108,6 +108,8 @@ Site.Product = {
   styleVariantSelects: function() {
     var _this = this;
 
+    var $cartForm = $('#cart-form');
+
     var $selectorWrapper = $('.selector-wrapper');
     var $priceWrapper = $selectorWrapper.last();
 
@@ -140,7 +142,7 @@ Site.Product = {
     }
 
     // Style Price and Add to cart
-    $('#cart-form').append('<div id="cart-end-row" class="grid-item item-s-12 grid-row no-gutter justify-end"></div>');
+    $cartForm.append('<div id="cart-end-row" class="grid-item item-s-12 grid-row no-gutter justify-end"></div>');
 
     // This is the last row of the form where the Price and Add to cart button will be
     var $endRow = $('#cart-end-row');
@@ -194,6 +196,9 @@ Site.Product = {
     } else {
       $selectorWrapper.remove()
     }
+
+    // Show form
+    $('#product').css('visibility', 'visible');
 
     // Prevent styling again
     _this.selectsStyled = true;
