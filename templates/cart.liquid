@@ -10,10 +10,10 @@
           {% for item in cart.items %}
           {% assign variant_price = item.price | money %}
           <div id="cart-item-{{item.variant.id}}" class="cart-item grid-item item-s-12 padding-top-small padding-bottom-small no-gutter grid-row align-items-center border-bottom">
-            <div class="grid-item item-s-3 item-l-2">
+            <div class="grid-item item-s-2 item-l-2 text-align-center">
               <input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="form-element quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
             </div>
-            <div class="grid-item item-s-2 item-l-3">
+            <div class="grid-item item-s-3 item-m-2 item-l-3">
               <a href="{{ item.product.url }}">
                 {% if item.variant.image != blank %}
                   <img src="{{ item.variant.image | img_url: '300x300' }}" alt="{{ item.title | escape }}" />
@@ -22,7 +22,7 @@
                 {% endif %}
               </a>
             </div>
-            <div class="grid-item item-s-4">
+            <div class="grid-item item-s-4 item-m-5 item-l-4">
               <div class="margin-bottom-micro">
                 <a href="{{ item.product.url }}">{{ item.product.title }}</a>
               </div>
@@ -36,20 +36,21 @@
                 {% endif %}
               {% endif %}
             </div>
-            <div class="grid-item item-s-3 text-align-right">
-              {{ item.price | money }} <a href="/cart/change/{{item.variant.id}}?quantity=0">X</a>
+            <div class="grid-item item-s-3 text-align-center grid-row justify-around">
+              <div>{{ item.price | money }}</div>
+              <div><a href="/cart/change/{{item.variant.id}}?quantity=0">X</a></div>
             </div>
           </div>
           {% endfor %}
         </div>
-        <div class="grid-item text-align-right margin-top-basic margin-bottom-basic">
+        <div class="grid-item text-align-right margin-top-basic margin-bottom-basic item-padding-extra">
           <a href="/">< Back to shop</a>
         </div>
       </div>
 
       <div id="cart-options-holder" class="grid-item item-s-12 item-l-6 no-gutter grid-column justify-end  border-right-half">
         <div id="cart-subtotal-holder" class="grid-item no-gutter grid-row">
-          <div class="grid-item item-s-12 text-align-right font-uppercase margin-top-basic margin-bottom-basic">
+          <div class="grid-item item-s-12 text-align-right font-uppercase margin-top-basic margin-bottom-basic item-padding-extra">
             Subtotal: {{ cart.total_price | money }}
           </div>
         </div>
