@@ -10,11 +10,9 @@
           <div class="grid-item item-s-12 no-gutter">
             <div id="product-gallery">
             {% for image in product.images %}
-              {% unless image == product.featured_image %}
               <div class="product-gallery-item">
                 <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
               </div>
-              {% endunless %}
             {% endfor %}
             </div>
             <img src="{{ 'product_left.png' | asset_url }}" class="gallery-arrow gallery-prev" />
