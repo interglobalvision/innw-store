@@ -6,7 +6,7 @@
   <div class="container">
     <div class="grid-row">
       {% for product in collection.products %}
-      <div class="grid-item item-s-12 item-m-4 item-l-3 text-align-center">
+      <div class="grid-item item-s-12 item-m-4 item-l-3 text-align-center margin-bottom-basic">
         <a href="{{ product.url }}" class="text-align-center">
           <img src="{{ product.featured_image | product_img_url: '300x', format: 'pjpg' }}" alt="{{ product.title | escape }}"
           srcset="
