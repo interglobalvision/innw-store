@@ -87,7 +87,6 @@ Site.Product = {
       speed: _this.sliderSpeed,
       slidesToShow: 1,
       centerMode: true,
-      variableWidth: true,
       prevArrow: '.gallery-prev',
       nextArrow: '.gallery-next',
     });
