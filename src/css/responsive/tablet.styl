@@ -1,7 +1,15 @@
 $header-height = 73px
+$header-and-title-height = 72px + $header-height
 
 .full-height
   min-height: calc('100vh - ' + $header-height)
+
+.full-height-after-title
+  min-height: calc('100vh - ' + $header-and-title-height)
+
+.item-padding-extra
+  padding-left: $margin-basic
+  padding-right: $margin-basic
 
 // HEADER
 

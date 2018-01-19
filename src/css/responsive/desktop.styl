@@ -1,7 +1,15 @@
 $header-height = 83px
+$header-and-title-height = 81px + $header-height
 
 .full-height
   min-height: calc('100vh - ' + $header-height)
+
+.full-height-after-title
+  min-height: calc('100vh - ' + $header-and-title-height)
+
+.item-padding-extra
+  padding-left: $margin-basic
+  padding-right: $margin-basic
 
 $border-style-half = 1px solid $color-black
 
@@ -85,3 +93,14 @@ $border-style-half = 1px solid $color-black
 #page-about-contact
   text-align: center
   align-self: center
+
+// CART
+
+#cart
+  flex-direction: row
+
+#cart-items-column
+  order: 2
+
+#cart-options-holder
+  order: 1

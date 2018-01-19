@@ -1,62 +1,73 @@
 <section id="cart" class="font-uppercase">
-  <h1 class="text-align-center padding-top-small padding-bottom-small">Cart</h1>
   <div class="container">
+    <div class="border-bottom padding-top-small padding-bottom-small">
+      <h1 class="font-size-mid text-align-center">Cart</h1>
+    </div>
     {% if cart.item_count > 0 %}
-    <form action="/cart" method="post" id="cart" class="cart grid-row">
-      <div class="grid-item item-s-12 item-l-6 no-gutter grid-row align-items-start">
-        {% for item in cart.items %}
-        {% assign variant_price = item.price | money %}
-        <div id="cart-item-{{item.variant.id}}" class="cart-item grid-item item-s-12 padding-top-small padding-bottom-small no-gutter grid-row align-items-center">
-          <div class="grid-item item-s-3 item-l-2">
-            <input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="form-element quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
-          </div>
-          <div class="grid-item item-s-2 item-l-3">
-            <a href="{{ item.product.url }}">
-              {% if item.variant.image != blank %}
-                <img src="{{ item.variant.image | img_url: '300x300' }}" alt="{{ item.title | escape }}" />
-              {% else %}
-                <img src="{{ item.image | img_url: '300x300' }}" alt="{{ item.title | escape }}" />
-              {% endif %}
-            </a>
-          </div>
-          <div class="grid-item item-s-4">
-            <div class="margin-bottom-micro">
-              <a href="{{ item.product.url }}">{{ item.product.title }}</a>
+    <form action="/cart" method="post" id="cart" class="cart full-height-after-title">
+      <div id="cart-items-column" class="grid-item item-s-12 item-l-6 flex-grow no-gutter grid-column border-left-half justify-between">
+        <div class="grid-item no-gutter flex-row font-size-small">
+          {% for item in cart.items %}
+          {% assign variant_price = item.price | money %}
+          <div id="cart-item-{{item.variant.id}}" class="cart-item grid-item item-s-12 padding-top-small padding-bottom-small no-gutter grid-row align-items-center border-bottom">
+            <div class="grid-item item-s-2 item-l-2 text-align-center">
+              <input type="text" size="2" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="form-element quantity" value="{{ item.quantity }}" min="1" maxlength="2" onfocus="this.select();"/>
             </div>
-            {% if item.variant.option1 != variant_price %}
-              {{ item.variant.option1 }}
-              {% if item.variant.option2 != variant_price %}
-                / {{ item.variant.option2 }}
-                {% if item.variant.option3 != variant_price %}
-                  / {{ item.variant.option3 }}
+            <div class="grid-item item-s-3 item-m-2 item-l-3">
+              <a href="{{ item.product.url }}">
+                {% if item.variant.image != blank %}
+                  <img src="{{ item.variant.image | img_url: '300x300' }}" alt="{{ item.title | escape }}" />
+                {% else %}
+                  <img src="{{ item.image | img_url: '300x300' }}" alt="{{ item.title | escape }}" />
+                {% endif %}
+              </a>
+            </div>
+            <div class="grid-item item-s-4 item-m-5 item-l-4">
+              <div class="margin-bottom-micro">
+                <a href="{{ item.product.url }}">{{ item.product.title }}</a>
+              </div>
+              {% if item.variant.option1 != variant_price %}
+                {{ item.variant.option1 }}
+                {% if item.variant.option2 != variant_price %}
+                  / {{ item.variant.option2 }}
+                  {% if item.variant.option3 != variant_price %}
+                    / {{ item.variant.option3 }}
+                  {% endif %}
                 {% endif %}
               {% endif %}
-            {% endif %}
+            </div>
+            <div class="grid-item item-s-3 text-align-center grid-row justify-around">
+              <div>{{ item.price | money }}</div>
+              <div><a href="/cart/change/{{item.variant.id}}?quantity=0">X</a></div>
+            </div>
           </div>
-          <div class="grid-item item-s-3 text-align-right">
-            {{ item.price | money }} <a href="/cart/change/{{item.variant.id}}?quantity=0">X</a>
-          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-        <div class="grid-item item-s-12 align-self-end text-align-right">
+        <div class="grid-item text-align-right margin-top-basic margin-bottom-basic item-padding-extra">
           <a href="/">< Back to shop</a>
         </div>
       </div>
 
-      <div class="grid-item item-s-12 item-l-6 no-gutter grid-row align-items-end">
-        <div class="grid-item item-s-12 text-align-right font-uppercase">
-          Subtotal: {{ cart.total_price | money }}
+      <div id="cart-options-holder" class="grid-item item-s-12 item-l-6 no-gutter grid-column justify-end  border-right-half">
+        <div id="cart-subtotal-holder" class="grid-item no-gutter grid-row">
+          <div class="grid-item item-s-12 text-align-right font-uppercase margin-top-basic margin-bottom-basic item-padding-extra">
+            Subtotal: {{ cart.total_price | money }}
+          </div>
         </div>
-      </div>
 
-      <div class="grid-item item-s-12 item-l-6 offset-l-6 no-gutter grid-row">
-        <input class="button item-s-6 font-uppercase" type="submit" id="update-cart" name="update" value="Update Cart" title="Update Cart" />
-        <input class="button item-s-6 font-uppercase" type="submit" id="cart-checkout" name="checkout" value="Checkout" />
+        <div class="grid-item no-gutter grid-row border-top">
+          <input class="button item-s-6 font-uppercase font-mono font-size-mid padding-top-basic padding-bottom-basic" type="submit" id="update-cart" name="update" value="Update Cart" title="Update Cart" />
+          <input class="button button-black item-s-6 font-uppercase font-mono font-size-mid padding-top-basic padding-bottom-basic" type="submit" id="cart-checkout" name="checkout" value="Checkout" />
+        </div>
       </div>
 
     </form>
     {% else %}
-    <p>Your cart is empty!</p>
+    <div class="grid-row justify-center align-items-center full-height-after-title">
+      <div class="grid-item">
+        <p>Your cart is empty! ☺️</p>
+      </div>
+    </div>
     {% endif %}
   </div>
 </section>
