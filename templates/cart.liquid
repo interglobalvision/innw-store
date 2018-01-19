@@ -11,7 +11,7 @@
           {% assign variant_price = item.price | money %}
           <div id="cart-item-{{item.variant.id}}" class="cart-item grid-item item-s-12 padding-top-small padding-bottom-small no-gutter grid-row align-items-center border-bottom">
             <div class="grid-item item-s-2 item-l-2 text-align-center">
-              <input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="form-element quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
+              <input type="text" size="2" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="form-element quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
             </div>
             <div class="grid-item item-s-3 item-m-2 item-l-3">
               <a href="{{ item.product.url }}">
