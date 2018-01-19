@@ -2,7 +2,13 @@
   <article class="article grid-item item-s-10 offset-s-1 padding-top-small padding-bottom-small">
     {% if article.image %}
     <div class="margin-bottom-micro">
-      <img src="{{ article | img_url: 'grande' }}" />
+      <img src="{{ article.image | img_url: '300x', format: 'pjpg' }}" alt="{{ article.title | escape }}"
+      srcset="
+      {% if article.image.width >= 300 %}{{ article.image.src | img_url: '300x' }} 300w{% endif %}
+      {% if article.image.width >= 720 %},{{ article.image.src | img_url: '720x' }} 720w{% endif %}
+      "
+      width="{% if article.image.width >= 720 %}720{% else %}{{ article.image.width }}{% endif %}"
+      />
     </div>
     {% endif %}
     <span class="font-size-small">{{ article.published_at | date: '%m/%d/%C%y' }}</span>
