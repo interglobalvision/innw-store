@@ -11,7 +11,14 @@
             <div id="product-gallery">
             {% for image in product.images %}
               <div class="product-gallery-item">
-                <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+                <img class="product-gallery-image" src="{{ image.src | img_url: '300x', format: 'pjpg' }}" alt="{{ product.title | escape }}"
+                srcset="
+                {% if image.width >= 300 %}{{ image.src | img_url: '300x' }} 240w{% endif %}
+                {% if image.width >= 720 %},{{ image.src | img_url: '720x' }} 720w{% endif %}
+                {% if image.width >= 1000 %},{{ image.src | img_url: '1000x' }} 1000w{% endif %}
+                "
+                width="{% if image.width >= 1000 %}1000{% else %}{{ image.width }}{% endif %}"
+                />
               </div>
             {% endfor %}
             </div>
