@@ -8,7 +8,13 @@
       {% for product in collection.products %}
       <div class="grid-item item-s-12 item-m-4 item-l-3 text-align-center">
         <a href="{{ product.url }}" class="text-align-center">
-          <img src="{{ product.featured_image | product_img_url: 'x376' }}" alt="{{ product.title | escape }}" />
+          <img src="{{ product.featured_image | product_img_url: '300x', format: 'pjpg' }}" alt="{{ product.title | escape }}"
+          srcset="
+          {% if product.featured_image.width >= 300 %}{{ product.featured_image.src | product_img_url: '300x' }} 300w{% endif %}
+          {% if product.featured_image.width >= 720 %},{{ product.featured_image.src | product_img_url: '720x' }} 720w{% endif %}
+          "
+          width="{% if product.featured_image.width >= 720 %}720{% else %}{{ product.featured_image.width }}{% endif %}"
+          />
         </a>
       </div>
       {% endfor %}
