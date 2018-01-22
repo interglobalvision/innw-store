@@ -12,7 +12,7 @@
     </div>
     {% endif %}
     <span class="font-size-small">{{ article.published_at | date: '%m/%d/%C%y' }}</span>
-    <h2 class="font-uppercase margin-bottom-small font-size-mid">{{ article.title }}</h2>
+    <h2 class="font-uppercase margin-bottom-small font-size-mid"><a href="{{ article.url }}">{{ article.title }}</a></h2>
     {{ article.content }}
   </article>
 </div>
