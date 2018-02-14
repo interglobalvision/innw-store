@@ -1,9 +1,25 @@
 <section id="article">
-  <div class="grid-row">
-    <div class="grid-item item-s-12 item-m-6">
-      <h2>{{ article.title }}</h2>
-      <p>{{ article.published_at | date: '%d %B %Y' }}</p>
-      {{ article.content }}
+  <div class="container">
+    <div class="grid-row full-height">
+      <div class="grid-item item-s-12 item-m-6 border-right-half grid-row no-gutter">
+        <div class="grid-item item-s-10 offset-s-1 padding-top-basic padding-bottom-basic">
+          {% if article.image %}
+          <div class="margin-bottom-micro">
+            <img src="{{ article.image | img_url: '300x', format: 'pjpg' }}" alt="{{ article.title | escape }}"
+            srcset="
+            {% if article.image.width >= 300 %}{{ article.image.src | img_url: '300x' }} 300w{% endif %}
+            {% if article.image.width >= 720 %},{{ article.image.src | img_url: '720x' }} 720w{% endif %}
+            "
+            width="{% if article.image.width >= 720 %}720{% else %}{{ article.image.width }}{% endif %}"
+            />
+          </div>
+          {% endif %}
+          <span class="font-size-small">{{ article.published_at | date: '%m/%d/%C%y' }}</span>
+          <h2 class="font-uppercase margin-bottom-small font-size-mid">{{ article.title }}</h2>
+          {{ article.content }}
+        </div>
+      </div>
+      <div class="grid-item item-s-12 item-m-6 border-left-half no-gutter"></div>
     </div>
   </div>
 </section>
