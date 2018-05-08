@@ -35,8 +35,9 @@
         <a href="/" class="grid-item flex-grow padding-top-small padding-bottom-small text-align-center">
           <img src="{{ 'INNW_Logo.png' | asset_url }}" class="icon" />
         </a>
-        <a href="/cart" class="grid-item item-s-3 text-align-center padding-top-small padding-bottom-small border-left">
+        <a href="/cart" class="grid-item item-s-3 text-align-center padding-top-small padding-bottom-small border-left grid-row justify-center align-items-center">
           <img src="{{ 'shopping_cart.png' | asset_url }}" class="icon" />
+          <span id="cart-count">{{ cart.item_count }}</span>
         </a>
       </nav>
       <nav id="menu-nav-holder" class="grid-row">
