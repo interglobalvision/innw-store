@@ -1192,6 +1192,26 @@ input.button-black[disabled='disabled'] {
 #cart-count {
   padding-left: 0.5em;
 }
+.collection-product img,
+.collection-product h2 {
+  transition: opacity 100ms;
+}
+.collection-product h2 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.collection-product:hover img {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+.collection-product:hover h2 {
+  -ms-filter: none;
+  -webkit-filter: none;
+          filter: none;
+  opacity: 1;
+}
 .hide-details {
   display: none;
 }
